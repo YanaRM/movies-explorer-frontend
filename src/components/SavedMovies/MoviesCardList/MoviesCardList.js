@@ -13,11 +13,9 @@ function MoviesCardList(props) {
             name={data.name}
             image={data.image}
             duration={data.duration}
-            key={data._id}
           />
         ))}
       </div>
-      <button className="movies__card-list-button">Ещё</button>
     </div>
   )
 }

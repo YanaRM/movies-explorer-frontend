@@ -29,20 +29,21 @@
   line-height: 16px;
 }
 
-.movies__card-like-button {
+.movies__card-delete-button {
   width: 24px;
   height: 24px;
   margin: 0;
-  background-image: url(../../../images/movies-like-button.svg);
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.movies__card-delete-button:hover {
+  background-image: url(../../../images/movies-delete-button.svg);
   background-position: center;
   background-color: #F9F9F9;
   background-repeat: no-repeat;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.movies__card-like-button_active {
-  background-image: url(../../../images/movies-like-button_active.svg);
 }
 
 .movies__card-movie-duration {

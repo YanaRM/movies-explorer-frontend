@@ -10,13 +10,13 @@
 }
 
 .promo__info-container {
-  margin: 75px auto auto 70px;
+  margin: 75px auto 0 70px;
   display: flex;
   flex-direction: column;
 }
 
 .promo__title {
-  width: 640px;
+  max-width: 640px;
   margin: 0;
   font-size: 50px;
   font-weight: 400;
@@ -47,6 +47,11 @@
   font-weight: 500;
   line-height: 16px;
   text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.promo__button:hover {
+  opacity: 70%;
 }
 
 .promo__picture {
@@ -57,4 +62,90 @@
   background-color: transparent;
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+@media screen and (min-width: 1280px) {
+  .promo__info-container {
+    margin-left: calc((100% - 1140px) / 2);
+  }
+
+  .promo__picture {
+    margin-right: calc((100% - 1140px) / 2);
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .promo {
+    height: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .promo__info-container {
+    margin: 48px auto 76px auto;
+    align-items: center;
+  }
+
+  .promo__title {
+    width: 680px;
+    font-size: 40px;
+    line-height: 50px;
+    text-align: center;
+  }
+
+  .promo__subtitle {
+    width: 260px;
+    margin-top: 22px;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+  }
+
+  .promo__button {
+    margin-top: 92px;
+  }
+
+  .promo__picture {
+    margin: 140px auto 0 auto;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .promo {
+    height: auto;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .promo__info-container {
+    margin: 44px 10px 30px 10px;
+    align-items: center;
+  }
+
+  .promo__title {
+    width: 100%;
+    font-size: 30px;
+    line-height: 38px;
+    text-align: center;
+  }
+
+  .promo__subtitle {
+    width: 260px;
+    margin-top: 24px;
+    font-size: 13px;
+    line-height: 16px;
+    text-align: center;
+  }
+
+  .promo__button {
+    margin-top: 80px;
+  }
+
+  .promo__picture {
+    width: 210px;
+    height: 206px;
+    margin: 70px auto 0 auto;
+  }
 }

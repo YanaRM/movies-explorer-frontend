@@ -1,6 +1,6 @@
 import React from 'react';
 import portfolioPicture from '../../../images/portfolio-picture.jpg';
-import linkPointer from '../../../images/portfolio-link-pointer.svg';
+import linkPointer from '../../../images/portfolio-links-pointer.svg';
 import './Portfolio.css';
 
 function Portfolio(props) {
@@ -18,19 +18,36 @@ function Portfolio(props) {
             профессию веб-разработчика, очень хочется заниматься этим 
             профессионально.
           </p>
-          <a className="portfolio__github-link" href="#">Github</a>
+          <a
+            className="portfolio__github-link"
+            href="https://github.com/YanaRM"
+            target="_blank"
+            rel="noreferrer">
+              Github</a>
         </div>
         <img className="portfolio__info-picture" src={portfolioPicture} alt="Фото студента" />
       </div>
       <p className="portfolio__subtitle">Портфолио</p>
       <div className="portfolio__links">
-        <a className="portfolio__link" href="#">
+        <a
+          className="portfolio__link"
+          href="https://github.com/YanaRM/how-to-learn"
+          target="_blank"
+          rel="noreferrer">
           Статичный сайт 
           <img className="portfolio__link-picture" src={linkPointer} alt="Стрелка" /></a>
-        <a className="portfolio__link" href="#">
+        <a
+          className="portfolio__link"
+          href="https://github.com/YanaRM/russian-travel"
+          target="_blank"
+          rel="noreferrer">
           Адаптивный сайт 
           <img className="portfolio__link-picture" src={linkPointer} alt="Стрелка" /></a>
-        <a className="portfolio__link" href="#">
+        <a
+          className="portfolio__link"
+          href="https://github.com/YanaRM/mesto"
+          target="_blank"
+          rel="noreferrer">
           Одностраничное приложение 
           <img className="portfolio__link-picture" src={linkPointer} alt="Стрелка" /></a>
       </div>

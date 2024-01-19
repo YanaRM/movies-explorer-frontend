@@ -51,12 +51,18 @@
 }
 
 .portfolio__github-link {
+  width: 46px;
   margin: 99px 0 0;
   font-size: 14px;
   font-weight: 500;
   line-height: 17px;
   color: black;
   text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.portfolio__github-link:hover {
+  opacity: 70%;
 }
 
 .portfolio__info-picture {
@@ -92,6 +98,7 @@
   color: black;
   text-decoration: none;
   border-bottom: 1px #E8E8E8 solid;
+  transition: opacity 0.3s ease-in-out;
 }
 
 .portfolio__link:first-child {
@@ -102,8 +109,171 @@
   border-bottom: none;
 }
 
+.portfolio__link:hover {
+  opacity: 70%;
+}
+
 .portfolio__link-picture {
   width: 29px;
   height: 60px;
   margin: 0;
+}
+
+@media screen and (min-width: 1280px) {
+  .portfolio__title {
+    margin-right: calc((100% - 1140px) / 2);
+    margin-left: calc((100% - 1140px) / 2);
+  }
+
+  .portfolio__info {
+    margin-right: calc((100% - 1140px) / 2);
+    margin-left: calc((100% - 1140px) / 2);
+  }
+
+  .portfolio__subtitle {
+    margin-left: calc((100% - 1140px) / 2);
+  }
+
+  .portfolio__links {
+    margin-right: calc((100% - 1140px) / 2);
+    margin-left: calc((100% - 1140px) / 2);
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .portfolio {
+    height: 994px;
+  }
+
+  .portfolio__title {
+    margin: 90px 50px 0 50px;
+  }
+
+  .portfolio__info {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .portfolio__info-text {
+    width: 364px;
+  }
+
+  .portfolio__student-name {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .portfolio__student-profession {
+    margin-top: 16px;
+  }
+
+  .portfolio__student-story {
+    margin-top: 20px;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .portfolio__github-link {
+    margin-top: 87px;
+  }
+
+  .portfolio__info-picture {
+    width: 255px;
+    height: 307px;
+  }
+
+  .portfolio__subtitle {
+    margin: 90px 50px 50px;
+  }
+
+  .portfolio__links {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  .portfolio__link {
+    font-size: 28px;
+  }
+
+  .portfolio__link-picture {
+    width: 27px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .portfolio {
+    height: 1198px;
+  }
+
+  .portfolio__title {
+    margin: 70px 14px 0 14px;
+    padding-bottom: 28px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .portfolio__info {
+    margin: 60px 14px 0 14px;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .portfolio__info-text {
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .portfolio__student-name {
+    font-size: 30px;
+    line-height: 36px;
+  }
+
+  .portfolio__student-profession {
+    margin-bottom: 20px;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .portfolio__student-story {
+    margin-top: 20px;
+    font-size: 11px;
+    line-height: 16px;
+    text-align: justify;
+  }
+
+  .portfolio__github-link {
+    margin-top: 40px;
+  }
+
+  .portfolio__info-picture {
+    width: 100%;
+    height: 100%;
+  }
+
+  .portfolio__subtitle {
+    margin: 70px 14px 0 14px;
+    font-size: 14px;
+  }
+
+  .portfolio__links {
+    margin: 40px 14px 70px 14px;
+  }
+
+  .portfolio__link {
+    margin-top: 20px;
+    padding-bottom: 19px;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .portfolio__link:first-child {}
+  
+  .portfolio__link:last-child {
+    padding-bottom: 0;
+  }
+
+  .portfolio__link-picture {
+    width: 18px;
+    height: 28px;
+  }
 }
