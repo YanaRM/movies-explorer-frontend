@@ -55,7 +55,7 @@ function Register(props) {
         </button>
       </form>
       <p className="register__caption">Уже зарегистрированы? 
-        <Link className="register__exit-button" to="/">Войти</Link>
+        <Link className="register__auth-link" to="/">Войти</Link>
       </p>
     </section>
   )
