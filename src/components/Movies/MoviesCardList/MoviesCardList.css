@@ -25,6 +25,12 @@
   font-size: 12px;
   font-weight: 500;
   line-height: 14px;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.movies__card-list-button:hover {
+  opacity: 70%;
 }
 
 @media screen and (min-width: 1280px) {

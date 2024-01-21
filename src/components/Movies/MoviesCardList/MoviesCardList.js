@@ -17,7 +17,7 @@ function MoviesCardList(props) {
           />
         ))}
       </div>
-      <button className="movies__card-list-button">Ещё</button>
+      <button className="movies__card-list-button" type="button" aria-label="Ещё">Ещё</button>
     </div>
   )
 }
