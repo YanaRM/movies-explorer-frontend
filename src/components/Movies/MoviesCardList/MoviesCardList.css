@@ -8,7 +8,7 @@
 .movies__card-list-container {
   margin: 70px 70px 0 70px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
   grid-auto-rows: 1fr;
   column-gap: 20px;
@@ -31,6 +31,11 @@
   .movies__card-list-container {
     margin-right: calc((100% - 1140px) / 2);
     margin-left: calc((100% - 1140px) / 2);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr;
+    grid-auto-rows: 1fr;
+    column-gap: 20px;
+    row-gap: 28px;
   }
 }
 

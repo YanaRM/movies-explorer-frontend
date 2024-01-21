@@ -112,11 +112,11 @@
     line-height: 14px;
   }
 
-  .footer__link:first-child {
+  .footer__link:first-of-type {
     margin: 0;
   }
 
-  .footer__link:last-child {
+  .footer__link:last-of-type {
     margin-top: 12px;
   }
 }

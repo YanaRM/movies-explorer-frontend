@@ -36,22 +36,28 @@
   width: 129px;
   height: 36px;
   margin: 146px 0 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
   border: 1px rgba(255, 255, 255, 0.6) solid;
   border-radius: 1px;
+  background-color: transparent;
   box-sizing: border-box;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 16px;
-  text-decoration: none;
   transition: opacity 0.3s ease-in-out;
 }
 
 .promo__button:hover {
   opacity: 70%;
+}
+
+.promo__button-link {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-decoration: none;
+  color: white;
 }
 
 .promo__picture {

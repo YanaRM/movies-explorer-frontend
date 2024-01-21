@@ -13,17 +13,16 @@
 
 .movies__card-caption-container {
   width: 100%;
-  margin: 10px 0 0;
-  padding-bottom: 25px;
+  height: 59px;
+  margin: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
   border-bottom: 1px #E8E8E8 solid;
 }
 
 .movies__card-caption {
-  margin: 0;
+  margin: 14px 0 0;
   font-size: 13px;
   font-weight: 500;
   line-height: 16px;
@@ -32,7 +31,7 @@
 .movies__card-delete-button {
   width: 24px;
   height: 24px;
-  margin: 0;
+  margin: 14px 0 0;
   background-color: transparent;
   border-radius: 50%;
   cursor: pointer;

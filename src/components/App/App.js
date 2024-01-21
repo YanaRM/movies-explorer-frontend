@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import '../../vendor/normalize.css';
 import '../../vendor/fonts/fonts.css';
@@ -13,10 +13,22 @@ import SavedMovies from '../SavedMovies/SavedMovies.js';
 import PageNotFound from '../PageNotFound/PageNotFound.js';
 import Footer from '../Footer/Footer.js';
 import Navigation from '../Navigation/Navigation.js';
+import HeaderAuthorized from '../Header/HeaderAuthorized/HeaderAuthorized.js';
 
 function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  function openHeaderMenu() {
+    setIsMenuOpen(true);
+  }
+
+  function closeHeaderMenu() {
+    setIsMenuOpen(false);
+  }
+
   return (
     <div className="page">
+      
       <Routes>
 
         <Route path="/" element={<Header
@@ -31,27 +43,27 @@ function App() {
         />
 
         <Route path="/movies" element={<Header
-          lightThemeClass={'header_light'}
-          buttonActiveClass={'header__menu-button_active'}
-          buttonLightClass={'header__menu-button_light'}
-          children={<Navigation
-            activeClass={'navigation_active'}
-            linkLightClass={'navigation__link_light'}
-            accountButtonLightClass={'navigation__account-button_light'}
-             />
+          lightThemeClass="header_light"
+          buttonActiveClass="header__menu-button_active"
+          buttonLightClass="header__menu-button_light"
+          onClick={openHeaderMenu}
+          children={
+            <HeaderAuthorized
+              lightMode="light"
+            />
           }
           />}
         />
 
         <Route path="/saved-movies" element={<Header
-          lightThemeClass={'header_light'}
-          buttonActiveClass={'header__menu-button_active'}
-          buttonLightClass={'header__menu-button_light'}
-          children={<Navigation
-            activeClass={'navigation_active'}
-            linkLightClass={'navigation__link_light'}
-            accountButtonLightClass={'navigation__account-button_light'}
-             />
+          lightThemeClass="header_light"
+          buttonActiveClass="header__menu-button_active"
+          buttonLightClass="header__menu-button_light"
+          onClick={openHeaderMenu}
+          children={
+            <HeaderAuthorized
+              lightMode="light"
+            />
           }
           />}
         />
@@ -83,8 +95,13 @@ function App() {
         <Route path="/movies" element={<Footer />} />
 
         <Route path="/saved-movies" element={<Footer />} />
-        
+
       </Routes>
+
+      <Navigation
+        isOpen={isMenuOpen}
+        onClose={closeHeaderMenu}/>
+
     </div>
   )
 }

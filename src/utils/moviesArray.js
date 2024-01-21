@@ -37,7 +37,7 @@ const moviesArray = [
 
   {
     name: 'Когда я думаю о Германии ночью',
-    image: 'https://b1.filmpro.ru/c/813169.jpg',
+    image: 'https://magazineart.art/wp-content/uploads/5-9.jpg',
     duration: '1ч 42м'
   },
 
@@ -67,7 +67,7 @@ const moviesArray = [
 
   {
     name: 'По волнам: Искусство звука в кино',
-    image: 'https://ya.ru/images/search?cbir_id=2236607%2FSw_UtZXyqJf7b5Zd2uH1zg4005&cbir_page=similar&img_url=https%3A%2F%2Fwww.film-rezensionen.de%2Fwp-content%2Fuploads%2F2017%2F05%2FDenk-ich-an-Deutschland-in-der-Nacht-Szene-5.jpg&lr=172&pos=0&rpt=imageview&url=https%3A%2F%2Favatars.mds.yandex.net%2Fget-images-cbir%2F2236607%2FSw_UtZXyqJf7b5Zd2uH1zg4005%2Forig',
+    image: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1600647/d2b1d4d3-3fc7-4af4-a6ec-fdf206f9afff/1920x',
     duration: '1ч 42м'
   }
 ]

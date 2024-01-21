@@ -12,7 +12,11 @@ function Header(props) {
       <div className="header__menu">
         {props.children}
       </div>
-      <div className={`header__menu-button ${props.buttonActiveClass} ${props.buttonLightClass}`}></div>
+      <button
+        className={`header__menu-button ${props.buttonActiveClass} ${props.buttonLightClass}`}
+        type="button"
+        aria-label="Кнопка меню"
+        onClick={props.onClick}></button>
     </header>
   )
 }

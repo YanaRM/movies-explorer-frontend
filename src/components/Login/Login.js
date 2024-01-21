@@ -6,9 +6,6 @@ import './Login.css';
 function Login(props) {
   return (
     <section className="login">
-      {/* <Link className="login__logo-link" to="">
-        <img className="register__logo-picture" src={logoPicture} alt="Логотип" />
-      </Link> */}
       <Link className="login__logo-link" to="/">
         <img className="register__logo-picture" src={logoPicture} alt="Логотип" />
       </Link>

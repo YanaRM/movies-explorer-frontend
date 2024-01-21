@@ -31,11 +31,21 @@
 }
 
 .header__menu-button {
+  width: 0;
+  height: 0;
   margin: 0;
+  padding: 0;
+  border: none;
   display: none;
   background-image: url(../../images/header-menu-button-white.svg);
   background-color: transparent;
   background-repeat: no-repeat;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.header__menu-button:hover {
+  opacity: 70%;
 }
 
 .header__menu-button_light {
@@ -90,8 +100,7 @@
   }
 
   .header__menu {
-    /* margin-right: 30px; */
-    margin-right: 0;
+    margin-right: 30px;
   }
 
   .header__menu-button {
