@@ -72,6 +72,11 @@
   line-height: 16px;
   color: white;
   text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.header__register-link:hover {
+  opacity: 70%;
 }
 
 .header__auth-link {
@@ -90,7 +95,11 @@
   text-decoration: none;
   text-align: center;
   color: black;
-  
+  transition: opacity 0.3s ease-in-out;
+}
+
+.header__auth-link:hover {
+  opacity: 70%;
 }
 
 @media screen and (min-width: 1280px) {
