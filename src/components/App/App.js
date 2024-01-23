@@ -33,11 +33,9 @@ function App() {
 
         <Route path="/" element={<Header
           children={
-            <div className="header__buttons-container">
-              <Link className="header__register-button" to="/signup">Регистрация</Link>
-              <Link to="/signin">
-                <button className="header__auth-button" type="button" aria-label="Войти">Войти</button>
-              </Link>
+            <div className="header__links-container">
+              <Link className="header__register-link" to="/signup">Регистрация</Link>
+              <Link to="/signin" className="header__auth-link">Войти</Link>
             </div>
           } />}
         />

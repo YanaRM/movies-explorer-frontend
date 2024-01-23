@@ -17,15 +17,11 @@ function HeaderAuthorized(props) {
           header-authorized__link_${props.lightMode}`}>
             Сохранённые фильмы</NavLink>
       </nav>
-      <button
-        className={`header-authorized__account-button header-authorized__account-button_${props.lightMode}`}
-        type="button"
-        aria-label="Аккаунт">
-        <Link className="header-authorized__account-button-link" to="/profile">
-          <p className="header-authorized__account-button-caption">Аккаунт</p>
-          <div className="header-authorized__account-button-picture"></div>
-        </Link>
-      </button>
+      <div className={`header-authorized__account-link-container
+        header-authorized__account-link-container_${props.lightMode}`}>
+        <Link className="header-authorized__account-link" to="/profile">Аккаунт</Link>
+        <div className="header-authorized__account-link-picture"></div>
+      </div>
     </nav>
   )
 }

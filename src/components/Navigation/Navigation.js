@@ -24,12 +24,10 @@ function Navigation(props) {
           className={({isActive}) => `navigation__link ${isActive ? "navigation__link_active" : ""}`}>
             Сохранённые фильмы</NavLink>
       </nav>
-      <button className="navigation__account-button" type="button" aria-label="Аккаунт">
-        <Link className="navigation__account-button-link" to="/profile">
-          <p className="navigation__account-button-caption">Аккаунт</p>
-          <div className="navigation__account-button-picture"></div>
-        </Link>
-      </button>
+      <div className="navigation__account-link-container">
+        <Link className="navigation__account-link" to="/profile">Аккаунт</Link>
+        <div className="navigation__account-link-picture"></div>
+      </div>
     </nav>
   )
 }

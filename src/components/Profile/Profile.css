@@ -79,24 +79,18 @@
   opacity: 70%;
 }
 
-.profile__exit-button {
+.profile__exit-link {
   margin: 16px 0 0;
-  padding: 0;
-  background-color: transparent;
-  border: none;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.profile__exit-button:hover {
-  opacity: 70%;
-}
-
-.profile__exit-button-link {
   font-size: 13px;
   font-weight: 500;
   line-height: 16px;
   color: #FF3055;
   text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.profile__exit-link:hover {
+  opacity: 70%;
 }
 
 @media screen and (max-width: 1023px) {
@@ -116,7 +110,7 @@
     margin-top: 210px;
   }
 
-  .profile__exit-button {
+  .profile__exit-link {
     margin-bottom: 100px;
   }
 }
@@ -142,7 +136,7 @@
     line-height: 14px;
   }
 
-  .profile__exit-button {
+  .profile__exit-link {
     margin-bottom: 40px;
   }
 }

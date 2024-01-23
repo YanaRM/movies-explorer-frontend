@@ -56,13 +56,16 @@
   display: block;
 }
 
-.header__buttons-container {
+.header__links-container {
   margin: 0 0 0 auto;
   width: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-self: flex-end;
 }
 
-.header__register-button {
+.header__register-link {
   margin: 0 30px 0 0;
   font-size: 12px;
   font-weight: 500;
@@ -71,17 +74,23 @@
   text-decoration: none;
 }
 
-.header__auth-button {
+.header__auth-link {
   width: 76px;
   height: 32px;
   margin: 0;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-color: #2BE080;
   border: none;
   border-radius: 3px;
-  font-weight: 12px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 16px;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  
 }
 
 @media screen and (min-width: 1280px) {
@@ -125,12 +134,12 @@
     margin-right: 14px;
   }
 
-  .header__register-button {
+  .header__register-link {
     margin-right: 14px;
     font-size: 10px;
   }
 
-  .header__auth-button {
+  .header__auth-link {
     width: 54px;
     height: 26px;
     font-size: 10px;

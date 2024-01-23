@@ -20,13 +20,11 @@ function SearchForm(props) {
             Найти
         </button>
       </form>
-      <label className="search-form__checkbox" for="checkbox">
-        <div className="search-form__checkbox-container">
-          <input className="search-form__checkbox-input" type="checkbox" id="checkbox"></input>
-          <span className="search-form__checkbox-button"></span>
-        </div>
+      <div className="search-form__checkbox-container">
+        <input className="search-form__checkbox-input" type="checkbox" id="checkbox"></input>
+        <label className="search-form__checkbox-button" for="checkbox"></label>
         <p className="search-form__checkbox-caption">Короткометражки</p>
-      </label>
+      </div>
     </div>
   )
 }

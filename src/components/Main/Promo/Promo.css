@@ -32,7 +32,7 @@
   opacity: 50%;
 }
 
-.promo__button {
+.promo__link {
   width: 129px;
   height: 36px;
   margin: 146px 0 0;
@@ -45,19 +45,16 @@
   border-radius: 1px;
   background-color: transparent;
   box-sizing: border-box;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.promo__button:hover {
-  opacity: 70%;
-}
-
-.promo__button-link {
   font-size: 12px;
   font-weight: 500;
   line-height: 16px;
   text-decoration: none;
   color: white;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.promo__link:hover {
+  opacity: 70%;
 }
 
 .promo__picture {

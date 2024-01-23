@@ -35,9 +35,7 @@ function Profile(props) {
         <span className="profile__input-error email-input-error"></span>
         <button className="profile__edit-button" type="submit" aria-label="Редактировать">Редактировать</button>
       </form>
-      <button className="profile__exit-button" type="button" aria-label="Выйти из аккаунта">
-        <Link className="profile__exit-button-link" to="/signin">Выйти из аккаунта</Link>
-      </button>
+      <Link className="profile__exit-link" to="/signin">Выйти из аккаунта</Link>
     </section>
   )
 }
