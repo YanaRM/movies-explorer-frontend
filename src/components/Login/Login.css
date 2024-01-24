@@ -1,0 +1,157 @@
+.login {
+  height: 700px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login__logo-link {
+  width: 38px;
+  height: 38px;
+  margin: 70px 0 0;
+  align-self: flex-start;
+}
+
+.login__logo-picture {
+  margin: 0;
+}
+
+.login__title {
+  width: 396px;
+  margin: 40px 0 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+}
+
+.login__form {
+  width: 396px;
+  margin: 40px 0 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.login__input-container {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px #E8E8E8 solid;
+  padding-bottom: 10px;
+}
+
+.login__input-container:last-of-type {
+  margin-top: 24px;
+}
+
+.login__input-caption {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  color: #A0A0A0;
+}
+
+.login__email-input {
+  margin: 5px 0 0;
+  border: none;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+}
+
+.login__input-error {}
+
+.login__password-input {
+  margin: 5px 0 0;
+  border: none;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+}
+
+.login__submit-button {
+  height: 45px;
+  margin: 221px 0 0;
+  border: none;
+  background-color: #3456F3;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  color: white;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.login__submit-button:hover {
+  opacity: 80%;
+}
+
+.login__caption {
+  margin: 16px 0 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #A0A0A0;
+}
+
+.login__register-link {
+  margin: 0 0 0 6px;
+  color: #3456F3;
+  text-decoration: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.login__register-link:hover {
+  opacity: 70%;
+}
+
+@media screen and (max-width: 1023px) {
+  .login {
+    height: auto;
+  }
+
+  .login__logo-link {
+    margin-top: 232px;
+  }
+
+  .login__caption {
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .login {
+    height: auto;
+  }
+
+  .login__logo-link {
+    margin-top: 56px;
+    align-self: center;
+  }
+
+  .login__title {
+    align-self: center;
+    text-align: center;
+  }
+
+  .login__form {
+    width: 260px;
+    margin-top: 80px;
+  }
+
+  .login__submit-button {
+    margin-top: calc(100vh - 396px);
+  }
+
+  .login__caption {
+    margin-top: 14px;
+    margin-bottom: 30px;
+    font-size: 12px;
+    line-height: 14px;
+  }
+
+  .login__register-link {
+    margin-left: 7px;
+  }
+}
