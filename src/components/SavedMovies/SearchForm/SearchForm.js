@@ -21,7 +21,7 @@ function SearchForm(props) {
       disableSubmitButton();
 
       const { movie } = values;
-      props.handleSearchMovie(movie);
+      props.handleSearchSavedMovie(movie);
 
       isNotClearInput = false;
     }
@@ -29,7 +29,7 @@ function SearchForm(props) {
 
   function handleChangeCheckbox() {
     setIsChecked(!isChecked);
-    props.handleToggleMovieCheckbox(!isChecked);
+    props.handleToggleSavedMovieCheckbox(!isChecked);
   }
 
   return (
