@@ -41,7 +41,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.movies__card-delete-button:hover {
+.movies__card:hover .movies__card-delete-button {
   background-image: url(../../../images/movies-delete-button.svg);
   background-position: center;
   background-color: #F9F9F9;

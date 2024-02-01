@@ -1,8 +1,9 @@
 import React from 'react';
+import { CurrentUserContext } from '../../../contexts/CurrentUserContext.js';
 import './MoviesCard.css';
 
 function MoviesCard(props) {
-
+  const currentUser = React.useContext(CurrentUserContext);
   const isSaved = props.savedMovies.find(i => i.movieId === props.movie.id);
   const likeButtonClassName = (
     `movies__card-like-button ${isSaved && 'movies__card-like-button_active'}`)
@@ -26,7 +27,10 @@ function MoviesCard(props) {
     if (!isSaved) {
       props.handleLikeClick(props.movie);
     } else {
-      return;
+      const currentUserLikedMovies = props.savedMovies.filter(i => i.owner === currentUser._id);
+      const likedMovie = currentUserLikedMovies.find((i) => {return i.movieId === props.movie.id});
+      const movieId = likedMovie._id;
+      props.handleDeleteMovie(movieId);
     }
   };
 

@@ -18,7 +18,7 @@ function MoviesCard(props) {
   const minutes = convertMinutes();
 
   function handleDeleteClick() {
-    props.handleDeleteMovie(props.movie);
+    props.handleDeleteMovie(props.movie._id);
   }
 
   return (

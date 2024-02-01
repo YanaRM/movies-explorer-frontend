@@ -17,9 +17,10 @@ function Movies(props) {
         <MoviesCardList
           filteredMovies={props.filteredMovies}
           savedMovies={props.savedMovies}
-          handleLikeClick={props.handleLikeClick} />
+          handleLikeClick={props.handleLikeClick}
+          handleDeleteMovie={props.handleDeleteMovie} />
       ) : (
-        <p className="movies__search-message">{props.errorMessage}</p>
+        <p className="movies__search-message">{props.moviesErrorMessage}</p>
       )}
 
     </section>

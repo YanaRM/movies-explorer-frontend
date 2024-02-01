@@ -1,35 +1,43 @@
-const userAlreadyExists = 'Такой пользователь уже существует';
+// Сообщения об ошибках валидации:
 
-const userNotFound = 'Пользователь не найден';
+const ERROR_MESSAGE = {
+  USER_EXISTS: 'Такой пользователь уже существует',
 
-const wrongData = 'Неправильно введены данные';
+  INCORRECT_DATA: 'Неправильно введены данные',
 
-const wrongEmailOrPassword = 'Неправильные почта или пароль';
+  WRONG_EMAIL_OR_PASSWORD: 'Неправильные почта или пароль',
 
-const successfulLogout = 'Выход из профиля выполнен успешно';
+  SERVER_INTERNAL_ERROR: 'На сервере произошла ошибка',
 
-const movieNotFound = 'Фильм не найден';
+  SEARCH_INPUT_ERROR: 'Нужно ввести ключевое слово',
 
-const deletingMoviesForbidden = 'Вы не можете удалять чужие фильмы';
+  SEARCH_REQUEST_ERROR: 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз',
+}
 
-const movieDeleted = 'Вы не можете удалять чужие фильмы';
+// Длительность короткометражного фильма:
+const SHORT_MOVIE_DURATION = 40;
 
-const authorizationRequired = 'Необходима авторизация';
+// Константы ресайза приложения:
+const SCREEN_SIZE_768 = 768;
+const SCREEN_SIZE_1024 = 1024;
 
-const serverErrorMessage = 'На сервере произошла ошибка';
+const START_CARDS_SCREEN_BELOW_768 = 5;
+const START_CARDS_SCREEN_BELOW_1024 = 8;
+const START_CARDS_SCREEN_ABOVE_1280 = 16;
 
-const pageNotFound = 'Страница не найдена';
+const ADDED_CARDS_SCREEN_BELOW_768 = 1;
+const ADDED_CARDS_SCREEN_BELOW_1024 = 2;
+const ADDED_CARDS_SCREEN_ABOVE_1280 = 4;
 
 export {
-  userAlreadyExists,
-  wrongData,
-  wrongEmailOrPassword,
-  successfulLogout,
-  movieNotFound,
-  deletingMoviesForbidden,
-  movieDeleted,
-  authorizationRequired,
-  serverErrorMessage,
-  pageNotFound,
-  userNotFound,
+  ERROR_MESSAGE,
+  SHORT_MOVIE_DURATION,
+  SCREEN_SIZE_768,
+  SCREEN_SIZE_1024,
+  START_CARDS_SCREEN_BELOW_768,
+  START_CARDS_SCREEN_BELOW_1024,
+  START_CARDS_SCREEN_ABOVE_1280,
+  ADDED_CARDS_SCREEN_BELOW_768,
+  ADDED_CARDS_SCREEN_BELOW_1024,
+  ADDED_CARDS_SCREEN_ABOVE_1280
 };

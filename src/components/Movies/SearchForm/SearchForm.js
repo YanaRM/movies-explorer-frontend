@@ -1,30 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FormValidation } from '../../../utils/FormValidation.js';
 import './SearchForm.css';
 
 function SearchForm(props) {
-  const { values, errors, isValid, handleChange } = FormValidation();
+  const { values, errors, isValid, handleChange, setValues } = FormValidation();
   const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    setValues({
+      movie: localStorage.getItem('inputData')
+    })
+  }, [setValues])
+
+  useEffect(() => {
+    setIsChecked(JSON.parse(localStorage.getItem('checkbox')))
+  }, [setIsChecked])
 
   function disableSubmitButton() {
     document.querySelector('.search-form__button').disabled = true;
   }
 
-  let isNotClearInput = false;
+  let isClearInput = false;
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    isNotClearInput = document.querySelector('.search-form__input-container').checkValidity();
+    isClearInput = document.querySelector('.search-form__input-container').checkValidity();
 
-    if (isNotClearInput === true) {
+    if (isClearInput === true) {
       disableSubmitButton();
 
       const { movie } = values;
-      props.handleSearchMovie(movie);
+      props.handleSearchMovie(movie, isChecked);
 
-      isNotClearInput = false;
+      isClearInput = false;
     }
+
+    document.querySelector('.search-form__button').disabled = false;
   }
 
   function handleChangeCheckbox() {

@@ -10,21 +10,23 @@ function SearchForm(props) {
     document.querySelector('.search-form__button').disabled = true;
   }
 
-  let isNotClearInput = false;
+  let isClearInput = false;
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    isNotClearInput = document.querySelector('.search-form__input-container').checkValidity();
+    isClearInput = document.querySelector('.search-form__input-container').checkValidity();
 
-    if (isNotClearInput === true) {
+    if (isClearInput === true) {
       disableSubmitButton();
 
       const { movie } = values;
       props.handleSearchSavedMovie(movie);
 
-      isNotClearInput = false;
+      isClearInput = false;
     }
+
+    document.querySelector('.search-form__button').disabled = false;
   }
 
   function handleChangeCheckbox() {

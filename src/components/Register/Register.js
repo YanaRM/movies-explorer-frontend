@@ -26,6 +26,8 @@ function Register(props) {
 
       isNotClearInput = false;
     }
+
+    document.querySelector('.register__submit-button').disabled = false;
   }
 
   return (

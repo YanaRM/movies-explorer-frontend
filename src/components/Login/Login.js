@@ -26,6 +26,8 @@ function Login(props) {
 
       isNotClearInput = false;
     }
+
+    document.querySelector('.login__submit-button').disabled = false;
   }
 
   return (

@@ -15,13 +15,14 @@ function SavedMovies(props) {
         <Preloader />
       ) : (
         <MoviesCardList
-        filteredSavedMovies={props.filteredSavedMovies}
-        savedMovies={props.savedMovies}
-        handleDeleteMovie={props.handleDeleteMovie}
-        isSavedMovieFound={props.isSavedMovieFound}
-      />
+          filteredSavedMovies={props.filteredSavedMovies}
+          savedMovies={props.savedMovies}
+          handleDeleteMovie={props.handleDeleteMovie}
+          isSavedMovieFound={props.isSavedMovieFound}
+          isSavedMoviesNotEmpty={props.isSavedMoviesNotEmpty}
+          savedMoviesErrorMessage={props.savedMoviesErrorMessage}
+        />
       )}
-        <p className="movies__search-message">{props.errorMessage}</p>
 
     </section>
   )
