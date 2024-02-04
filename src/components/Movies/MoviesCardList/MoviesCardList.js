@@ -3,11 +3,14 @@ import MoviesCard from '../MoviesCard/MoviesCard.js';
 import {
   SCREEN_SIZE_768,
   SCREEN_SIZE_1024,
+  SCREEN_SIZE_1280,
   START_CARDS_SCREEN_BELOW_768,
   START_CARDS_SCREEN_BELOW_1024,
+  START_CARDS_SCREEN_BELOW_1280,
   START_CARDS_SCREEN_ABOVE_1280,
   ADDED_CARDS_SCREEN_BELOW_768,
   ADDED_CARDS_SCREEN_BELOW_1024,
+  ADDED_CARDS_SCREEN_BELOW_1280,
   ADDED_CARDS_SCREEN_ABOVE_1280
 } from '../../../utils/constants.js';
 import './MoviesCardList.css';
@@ -38,6 +41,9 @@ function MoviesCardList(props) {
     } else if (screenWidth < SCREEN_SIZE_1024) {
       setStartNumberOfCards(START_CARDS_SCREEN_BELOW_1024);
       setAddedNumberOfCards(ADDED_CARDS_SCREEN_BELOW_1024);
+    } else if (screenWidth < SCREEN_SIZE_1280) {
+      setStartNumberOfCards(START_CARDS_SCREEN_BELOW_1280);
+      setAddedNumberOfCards(ADDED_CARDS_SCREEN_BELOW_1280);
     } else {
       setStartNumberOfCards(START_CARDS_SCREEN_ABOVE_1280);
       setAddedNumberOfCards(ADDED_CARDS_SCREEN_ABOVE_1280);

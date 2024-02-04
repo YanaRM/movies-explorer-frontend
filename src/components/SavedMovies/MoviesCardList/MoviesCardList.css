@@ -15,14 +15,6 @@
   row-gap: 28px;
 }
 
-.movies__search-message {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 22px;
-  align-self: center;
-}
-
 @media screen and (min-width: 1280px) {
   .movies__card-list-container {
     margin-right: calc((100% - 1140px) / 2);

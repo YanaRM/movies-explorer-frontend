@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logoPicture from '../../images/logo-picture.svg';
 import { FormValidation } from '../../utils/FormValidation.js';
+import { EMAIL_REGULAR_EXPRESSION } from '../../utils/constants.js';
 import './Register.css';
 
 function Register(props) {
@@ -48,7 +49,8 @@ function Register(props) {
             maxLength="30"
             value={values.name || ''}
             onChange={handleChange}
-            required>
+            required
+            disabled={props.isInputDisabled}>
           </input>
         </div>
         <span className="register__input-error name-input-error">{errors.name}</span>
@@ -61,7 +63,9 @@ function Register(props) {
             name="email"
             value={values.email || ''}
             onChange={handleChange}
-            required>
+            pattern={EMAIL_REGULAR_EXPRESSION}
+            required
+            disabled={props.isInputDisabled}>
           </input>
         </div>
         <span className="register__input-error email-input-error">{errors.email}</span>
@@ -75,10 +79,11 @@ function Register(props) {
             minLength="8"
             value={values.password || ''}
             onChange={handleChange}
-            required>
+            required
+            disabled={props.isInputDisabled}>
           </input>
         </div>
-        <span className="register__input-error password-input-error">{errors.password}</span>
+        <span className="register__input-error password-input-error">{props.registerErrorMessage || errors.password}</span>
         <button
           className={`register__submit-button ${isValid ? '' : 'register__submit-button_disabled'}`}
           type="submit"

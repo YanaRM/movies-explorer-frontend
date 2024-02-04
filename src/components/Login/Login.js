@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logoPicture from '../../images/logo-picture.svg';
 import { FormValidation } from '../../utils/FormValidation.js';
+import { EMAIL_REGULAR_EXPRESSION } from '../../utils/constants.js';
 import './Login.css';
 
 function Login(props) {
@@ -46,7 +47,9 @@ function Login(props) {
           name="email"
           value={values.email || ''}
           onChange={handleChange}
-          required>
+          pattern={EMAIL_REGULAR_EXPRESSION}
+          required
+          disabled={props.isInputDisabled}>
           </input>
           <span className="login__input-error email-input-error">{errors.email}</span>
         </div>
@@ -60,9 +63,10 @@ function Login(props) {
             minLength="8"
             value={values.password || ''}
             onChange={handleChange}
-            required>
+            required
+            disabled={props.isInputDisabled}>
           </input>
-          <span className="login__input-error password-input-error">{errors.password}</span>
+          <span className="login__input-error password-input-error">{props.loginErrorMessage || errors.password}</span>
         </div>
         <button
           className={`login__submit-button ${isValid ? '' : 'login__submit-button_disabled'}`}

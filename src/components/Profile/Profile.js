@@ -1,33 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext.js';
+import { FormValidation } from '../../utils/FormValidation.js';
 import './Profile.css';
 
 function Profile(props) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-
   const currentUser = React.useContext(CurrentUserContext);
 
-  function handleChangeName(evt) {
-    setName(evt.target.value);
-  }
-
-  function handleChangeEmail(evt) {
-    setEmail(evt.target.value);
-  }
+  const { values, handleChange, isValid, setValues } = FormValidation();
 
   useEffect(() => {
-    setName(currentUser.name);
-    setEmail(currentUser.email);
-  }, [currentUser]);
+    if (currentUser) {
+      setValues({
+        name: currentUser.name,
+        email: currentUser.email
+      });
+    }
+  }, [currentUser, setValues]);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    props.onUpdateUser({
-      name, email
-    })
+    props.onUpdateUser(values);
   }
 
   return (
@@ -44,8 +38,8 @@ function Profile(props) {
             minLength="2"
             maxLength="30"
             required
-            value={name || ''}
-            onChange={handleChangeName}>
+            value={values.name || ''}
+            onChange={handleChange}>
           </input>
         </div>
         <span className="profile__input-error name-input-error"></span>
@@ -57,12 +51,19 @@ function Profile(props) {
             type="email"
             name="email"
             required
-            value={email || ''}
-            onChange={handleChangeEmail}>
+            value={values.email || ''}
+            onChange={handleChange}>
           </input>
         </div>
-        <span className="profile__input-error email-input-error"></span>
-        <button className="profile__edit-button" type="submit" aria-label="Редактировать">Редактировать</button>
+        <span className="profile__input-error email-input-error">{props.updateUserErrorMessage}</span>
+        <button
+          className={`profile__edit-button ${
+            !isValid || (values.name === currentUser.name && values.email === currentUser.email)
+            ? 'profile__edit-button_disabled' : ''
+          }`}
+          type="submit"
+          aria-label="Редактировать"
+          disabled={!isValid || (values.name === currentUser.name && values.email === currentUser.email)}>Редактировать</button>
       </form>
       <Link className="profile__exit-link" to="/signin" onClick={props.signOut}>Выйти из аккаунта</Link>
     </section>

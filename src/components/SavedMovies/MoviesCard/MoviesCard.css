@@ -64,6 +64,13 @@
   .movies__card-picture {
     height: 190px;
   }
+
+  .movies__card-delete-button {
+    background-image: url(../../../images/movies-delete-button.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #F9F9F9;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -73,5 +80,12 @@
 
   .movies__card-picture {
     height: 168px;
+  }
+
+  .movies__card-delete-button {
+    background-image: url(../../../images/movies-delete-button.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #F9F9F9;
   }
 }

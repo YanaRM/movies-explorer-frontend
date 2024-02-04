@@ -9,18 +9,18 @@ function Movies(props) {
     <section className="movies">
       <SearchForm
         handleSearchMovie={props.handleSearchMovie}
-        handleToggleMovieCheckbox={props.handleToggleMovieCheckbox} />
+        handleToggleMovieCheckbox={props.handleToggleMovieCheckbox}
+        searchMovieErrorMessage={props.searchMovieErrorMessage} />
+      <p className="movies__search-message">{props.moviesErrorMessage}</p>
 
       {props.isLoading ? (
         <Preloader />
-      ) : props.isMovieFound ? (
+      ) : (
         <MoviesCardList
           filteredMovies={props.filteredMovies}
           savedMovies={props.savedMovies}
           handleLikeClick={props.handleLikeClick}
           handleDeleteMovie={props.handleDeleteMovie} />
-      ) : (
-        <p className="movies__search-message">{props.moviesErrorMessage}</p>
       )}
 
     </section>

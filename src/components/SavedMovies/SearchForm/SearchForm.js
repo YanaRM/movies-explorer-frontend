@@ -1,32 +1,42 @@
-import React, { useState } from 'react';
-import { FormValidation } from '../../../utils/FormValidation.js';
+import React, { useEffect, useState } from 'react';
+import { SEARCH_INPUT_ERROR } from '../../../utils/constants.js';
 import './SearchForm.css';
 
 function SearchForm(props) {
-  const { values, errors, isValid, handleChange } = FormValidation();
+  const [inputValue, setInputValue] = useState('');
   const [isChecked, setIsChecked] = useState(false);
+  const [searchError, setSearchError] = useState({
+      errorMessage: "",
+      isValid: true
+    });
 
-  function disableSubmitButton() {
-    document.querySelector('.search-form__button').disabled = true;
+  function handleChange(evt) {
+    setInputValue(evt.target.value);
+
+    if (evt.target.value.length === 0) {
+      setSearchError({
+        isValid: evt.target.validity.valid,
+        errorMessage: SEARCH_INPUT_ERROR
+      });
+    } else {
+      setSearchError({
+        isValid: evt.target.validity.valid,
+        errorMessage: ''
+      });
+    }
   }
 
-  let isClearInput = false;
+  function handleSubmit(evt) {
+    evt.preventDefault();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    isClearInput = document.querySelector('.search-form__input-container').checkValidity();
-
-    if (isClearInput === true) {
-      disableSubmitButton();
-
-      const { movie } = values;
-      props.handleSearchSavedMovie(movie);
-
-      isClearInput = false;
+    if (!inputValue) {
+      return setSearchError({
+        isValid: false,
+        errorMessage: SEARCH_INPUT_ERROR
+      });
     }
 
-    document.querySelector('.search-form__button').disabled = false;
+    props.handleSearchSavedMovie(inputValue, isChecked);
   }
 
   function handleChangeCheckbox() {
@@ -44,15 +54,16 @@ function SearchForm(props) {
           name="movie"
           placeholder="Фильм"
           required
-          value={values.movie || ""}
+          value={inputValue || ""}
           onChange={handleChange}>
         </input>
-        <span className="search-form__input-error">{errors.movie}</span>
+        {<span className="search-form__input-error">
+          {searchError.errorMessage || props.searchSavedMovieErrorMessage}
+        </span>}
         <button
           className="search-form__button"
           type="submit"
-          aria-label="Найти"
-          disabled={!isValid}>
+          aria-label="Найти">
             Найти
         </button>
       </form>

@@ -9,7 +9,10 @@ function SavedMovies(props) {
     <section className="saved-movies">
       <SearchForm
         handleSearchSavedMovie={props.handleSearchSavedMovie}
-        handleToggleSavedMovieCheckbox={props.handleToggleSavedMovieCheckbox} />
+        handleToggleSavedMovieCheckbox={props.handleToggleSavedMovieCheckbox}
+        searchSavedMovieErrorMessage={props.searchSavedMovieErrorMessage} />
+
+      <p className="saved-movies__search-message">{props.savedMoviesErrorMessage}</p>
 
       {props.isLoading ? (
         <Preloader />
@@ -19,7 +22,6 @@ function SavedMovies(props) {
           savedMovies={props.savedMovies}
           handleDeleteMovie={props.handleDeleteMovie}
           isSavedMovieFound={props.isSavedMovieFound}
-          isSavedMoviesNotEmpty={props.isSavedMoviesNotEmpty}
           savedMoviesErrorMessage={props.savedMoviesErrorMessage}
         />
       )}

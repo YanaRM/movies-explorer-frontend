@@ -8,7 +8,7 @@ class MainApi {
       return res.json();
     }
   
-    return Promise.reject(`Ошибка: ${res.status}`);
+    return Promise.reject(res.status);
   }
 
   getUserInfo() {

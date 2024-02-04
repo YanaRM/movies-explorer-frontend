@@ -7,25 +7,21 @@ function MoviesCardList(props) {
     <div className="movies__card-list">
       <div className="movies__card-list-container">
 
-        {props.isSavedMoviesNotEmpty ? (
-          props.savedMovies.map((data) => (
-          <MoviesCard
-            movie={data}
-            key={data._id || data.id}
-            handleDeleteMovie={props.handleDeleteMovie}
-          />
-        ))
-        ) : props.isSavedMovieFound ? (
+        {props.isSavedMovieFound ? (
           props.filteredSavedMovies.map((data) => (
             <MoviesCard
               movie={data}
               key={data._id || data.id}
               handleDeleteMovie={props.handleDeleteMovie}
             />
-          ))
-        ) : (
-          <p className="movies__search-message">{props.savedMoviesErrorMessage}</p>
-        )}
+          ))) : (
+            props.savedMovies.map((data) => (
+          <MoviesCard
+            movie={data}
+            key={data._id || data.id}
+            handleDeleteMovie={props.handleDeleteMovie}
+          />
+          )))}
 
       </div>
     </div>
