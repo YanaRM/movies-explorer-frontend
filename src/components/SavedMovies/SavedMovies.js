@@ -8,6 +8,7 @@ function SavedMovies(props) {
   return (
     <section className="saved-movies">
       <SearchForm
+        isChecked={props.isChecked}
         handleSearchSavedMovie={props.handleSearchSavedMovie}
         handleToggleSavedMovieCheckbox={props.handleToggleSavedMovieCheckbox}
         searchSavedMovieErrorMessage={props.searchSavedMovieErrorMessage} />

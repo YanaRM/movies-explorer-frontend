@@ -93,7 +93,7 @@ function Register(props) {
         </button>
       </form>
       <p className="register__caption">Уже зарегистрированы? 
-        <Link className="register__auth-link" to="/">Войти</Link>
+        <Link className="register__auth-link" to="/signin">Войти</Link>
       </p>
     </section>
   )

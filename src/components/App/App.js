@@ -40,7 +40,8 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [filteredSavedMovies, setFilteredSavedMovies] = useState([]);
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(JSON.parse(localStorage.getItem('checkbox')));
+  const [isCheckedSaved, setIsCheckedSaved] = useState(false);
   const [isMovieFound, setIsMovieFound] = useState(false);
   const [isSavedMovieFound, setIsSavedMovieFound] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -95,10 +96,8 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (JSON.parse(localStorage.getItem('filteredMovies')) && JSON.parse(localStorage.getItem('checkbox'))) {
-      const checkbox = JSON.parse(localStorage.getItem('checkbox'));
-      setFilteredMovies(JSON.parse(localStorage.getItem('filteredMovies')))
-      setIsChecked(JSON.parse(localStorage.getItem(checkbox)));
+    if (localStorage.getItem('filteredMovies')) {
+      setFilteredMovies(JSON.parse(localStorage.getItem('filteredMovies')));
     }
   }, []);
 
@@ -151,6 +150,9 @@ function App() {
 
         setIsInputDisabled(false);
         console.log(err);
+      })
+      .finally(() => {
+        setIsInputDisabled(false);
       })
   }
 
@@ -212,25 +214,31 @@ function App() {
   function handleDeleteMovie(movieId) {
     mainApi.deleteMovie(movieId)
       .then(() => {
-        const updatedSavedMoviesArray = savedMovies.filter(i => i._id !== movieId);
-        setSavedMovies(updatedSavedMoviesArray);
+        if (filteredSavedMovies.length === 0) {
+          const updatedSavedMoviesArray = savedMovies.filter(i => i._id !== movieId);
+          setSavedMovies(updatedSavedMoviesArray);
+        } else {
+          const updatedFilteredSavedMoviesArray = filteredSavedMovies.filter(i => i._id !== movieId);
+          setSavedMovies(updatedFilteredSavedMoviesArray);
+          setFilteredSavedMovies(updatedFilteredSavedMoviesArray);
+        }
       })
       .catch(err => console.log(err))
   }
 
-  function handleSearchMovie(inputData, checkbox) {
+  function handleSearchMovie(inputData) {
     if (movies.length !== 0) {
       const foundMovies =
         movies.filter((i) => {
         return i.nameRU.toLowerCase().includes(inputData.toLowerCase());
         });
 
-      if (checkbox) {
+      if (isChecked) {
         const shortMovies = foundMovies.filter((i) => i.duration <= SHORT_MOVIE_DURATION);
         setFilteredMovies(shortMovies);
         localStorage.setItem('filteredMovies', JSON.stringify(shortMovies));
         localStorage.setItem('inputData', inputData);
-        localStorage.setItem('checkbox', JSON.stringify(checkbox));
+        localStorage.setItem('checkbox', JSON.stringify(isChecked));
         if (shortMovies.length === 0) {
           setIsMovieFound(false);
           setMoviesErrorMessage(NOT_FOUND);
@@ -241,7 +249,7 @@ function App() {
         setFilteredMovies(foundMovies);
         localStorage.setItem('filteredMovies', JSON.stringify(foundMovies));
         localStorage.setItem('inputData', inputData);
-        localStorage.setItem('checkbox', JSON.stringify(checkbox));
+        localStorage.setItem('checkbox', JSON.stringify(isChecked));
         if (foundMovies.length === 0) {
           setIsMovieFound(false);
           setMoviesErrorMessage(NOT_FOUND);
@@ -260,12 +268,12 @@ function App() {
             return i.nameRU.toLowerCase().includes(inputData.toLowerCase());
             });
 
-          if (checkbox) {
+          if (isChecked) {
             const shortMovies = foundMovies.filter((i) => i.duration <= SHORT_MOVIE_DURATION);
             setFilteredMovies(shortMovies);
             localStorage.setItem('filteredMovies', JSON.stringify(shortMovies));
             localStorage.setItem('inputData', inputData);
-            localStorage.setItem('checkbox', JSON.stringify(checkbox));
+            localStorage.setItem('checkbox', JSON.stringify(isChecked));
             if (shortMovies.length === 0) {
               setIsMovieFound(false);
               setMoviesErrorMessage(NOT_FOUND);
@@ -276,7 +284,7 @@ function App() {
             setFilteredMovies(foundMovies);
             localStorage.setItem('filteredMovies', JSON.stringify(foundMovies));
             localStorage.setItem('inputData', inputData);
-            localStorage.setItem('checkbox', JSON.stringify(checkbox));
+            localStorage.setItem('checkbox', JSON.stringify(isChecked));
             if (foundMovies.length === 0) {
               setIsMovieFound(false);
               setMoviesErrorMessage(NOT_FOUND);
@@ -300,18 +308,14 @@ function App() {
     }
   }
 
-  function handleSearchSavedMovie(inputData, checkbox) {
-    if (!savedMovies.length) {
-      return [];
-    }
-
+  function handleSearchSavedMovie(inputData) {
     const foundMovies =
       savedMovies.filter((i) => {
       return i.nameRU.toLowerCase().includes(inputData.toLowerCase());
     });
     const shortMovies = foundMovies.filter((i) => i.duration <= SHORT_MOVIE_DURATION);
 
-    if (checkbox) {
+    if (isCheckedSaved) {
       setFilteredSavedMovies(shortMovies);
       
       if (shortMovies.length === 0) {
@@ -332,56 +336,39 @@ function App() {
         setSavedMoviesErrorMessage('');
       }
     }
-
-    // if (savedMovies.length !== 0) {
-    //   const foundMovies =
-    //     savedMovies.filter((i) => {
-    //     return i.nameRU.toLowerCase().includes(inputData.toLowerCase());
-    //     });
-
-    //   if (checkbox) {
-    //     const shortMovies = foundMovies.filter((i) => i.duration <= SHORT_MOVIE_DURATION);
-    //     setFilteredSavedMovies(shortMovies);
-
-    //     if (shortMovies.length === 0) {
-    //       setIsSavedMovieFound(false);
-    //       setSavedMoviesErrorMessage(NOT_FOUND);
-    //     } else {
-    //       setIsSavedMovieFound(true);
-    //     }
-    //   } else {
-    //     setFilteredSavedMovies(foundMovies);
-
-    //     if (foundMovies.length === 0) {
-    //       setIsSavedMovieFound(false);
-    //       setSavedMoviesErrorMessage(NOT_FOUND);
-    //     } else {
-    //       setIsSavedMovieFound(true);
-    //     }
-    //   }
-    // }
   }
 
-  function handleToggleMovieCheckbox(checked) {
+  function handleToggleMovieCheckbox() {
+    setIsChecked(!isChecked);
+
     let shortMovies;
 
     let filteredMovies = JSON.parse(localStorage.getItem('filteredMovies'));
-
-    if (checked) {
-      shortMovies = filteredMovies.filter((i) => i.duration <= SHORT_MOVIE_DURATION);
-    } else if (!checked) {
-      shortMovies = filteredMovies;
+    
+    if (filteredMovies.length === 0) {
+      return [];
     }
-    setFilteredMovies(shortMovies);
 
-    localStorage.setItem('checkbox', JSON.stringify(checked));
+    if (!isChecked) {
+      shortMovies = filteredMovies.filter((i) => i.duration <= SHORT_MOVIE_DURATION);
+      setFilteredMovies(shortMovies);
+      localStorage.setItem('filteredMovies', JSON.stringify(shortMovies));
+    } else if (isChecked) {
+      shortMovies = filteredMovies;
+      setFilteredMovies(shortMovies);
+      localStorage.setItem('filteredMovies', JSON.stringify(shortMovies));
+    }
+
+    localStorage.setItem('checkbox', JSON.stringify(!isChecked));
   }
 
-  function handleToggleSavedMovieCheckbox(checked) {
-    if (checked) {
+  function handleToggleSavedMovieCheckbox() {
+    setIsCheckedSaved(!isCheckedSaved);
+
+    if (!isCheckedSaved) {
       setFilteredSavedMovies(savedMovies.filter((i) => i.duration <= SHORT_MOVIE_DURATION));
-    } if (!checked) {
-      setFilteredSavedMovies(savedMovies);
+    } else if (isCheckedSaved) {
+      return savedMovies;
     }
   }
 
@@ -426,6 +413,7 @@ function App() {
 
           <Route path="/movies" element={<ProtectedRouteElement element={Movies}
             loggedIn={loggedIn}
+            isChecked={isChecked}
             movies={movies}
             savedMovies={savedMovies}
             handleLikeClick={handleSaveMovie}
@@ -442,6 +430,7 @@ function App() {
 
           <Route path="/saved-movies" element={<ProtectedRouteElement element={SavedMovies}
             loggedIn={loggedIn}
+            isChecked={isCheckedSaved}
             isLoading={isLoading}
             savedMovies={savedMovies}
             handleDeleteMovie={handleDeleteMovie}

@@ -8,6 +8,7 @@ function Movies(props) {
   return (
     <section className="movies">
       <SearchForm
+        isChecked={props.isChecked}
         handleSearchMovie={props.handleSearchMovie}
         handleToggleMovieCheckbox={props.handleToggleMovieCheckbox}
         searchMovieErrorMessage={props.searchMovieErrorMessage} />

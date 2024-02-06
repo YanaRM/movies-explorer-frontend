@@ -4,7 +4,6 @@ import './SearchForm.css';
 
 function SearchForm(props) {
   const [inputValue, setInputValue] = useState('');
-  const [isChecked, setIsChecked] = useState(false);
   const [searchError, setSearchError] = useState({
       errorMessage: "",
       isValid: true
@@ -12,8 +11,7 @@ function SearchForm(props) {
 
   useEffect(() => {
     setInputValue(localStorage.getItem('inputData'));
-    setIsChecked(JSON.parse(localStorage.getItem('checkbox')));
-  }, []);
+  }, [setInputValue]);
 
   useEffect(() => {
     searchError.isValid && setSearchError({errorMessage: '', isValid: true});
@@ -45,12 +43,7 @@ function SearchForm(props) {
       });
     }
 
-    props.handleSearchMovie(inputValue, isChecked);
-  }
-
-  function handleChangeCheckbox() {
-    setIsChecked(!isChecked);
-    props.handleToggleMovieCheckbox(!isChecked);
+    props.handleSearchMovie(inputValue);
   }
 
   return (
@@ -62,7 +55,6 @@ function SearchForm(props) {
           type="text"
           name="movie"
           placeholder="Фильм"
-          required
           value={inputValue || ""}
           onChange={handleChange}>
         </input>
@@ -81,8 +73,8 @@ function SearchForm(props) {
           className="search-form__checkbox-input"
           type="checkbox"
           id="checkbox"
-          checked={isChecked}
-          onChange={handleChangeCheckbox}></input>
+          checked={props.isChecked}
+          onChange={props.handleToggleMovieCheckbox}></input>
         <label className="search-form__checkbox-button" htmlFor="checkbox"></label>
         <p className="search-form__checkbox-caption">Короткометражки</p>
       </div>
