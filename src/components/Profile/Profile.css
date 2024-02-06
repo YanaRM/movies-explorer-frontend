@@ -52,7 +52,12 @@
   text-align: end;
 }
 
-.profile__input-error {}
+.profile__input-error {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  color: #FF004C;
+}
 
 .profile__email-input {
   margin: 0;
@@ -75,7 +80,13 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-.profile__edit-button:hover {
+.profile__edit-button_disabled {
+  color: #C2C2C2;
+  transition: none;
+  cursor: default;
+}
+
+.profile__edit-button:hover + .profile__edit-button_disabled {
   opacity: 70%;
 }
 

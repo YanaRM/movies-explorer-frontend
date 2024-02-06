@@ -1,13 +1,32 @@
 import React from 'react';
-import SearchForm from '../Movies/SearchForm/SearchForm.js';
+import SearchForm from '../SavedMovies/SearchForm/SearchForm.js';
 import MoviesCardList from './MoviesCardList/MoviesCardList.js';
+import Preloader from '../Preloader/Preloader.js';
 import './SavedMovies.css';
 
 function SavedMovies(props) {
   return (
     <section className="saved-movies">
-      <SearchForm />
-      <MoviesCardList />
+      <SearchForm
+        isChecked={props.isChecked}
+        handleSearchSavedMovie={props.handleSearchSavedMovie}
+        handleToggleSavedMovieCheckbox={props.handleToggleSavedMovieCheckbox}
+        searchSavedMovieErrorMessage={props.searchSavedMovieErrorMessage} />
+
+      <p className="saved-movies__search-message">{props.savedMoviesErrorMessage}</p>
+
+      {props.isLoading ? (
+        <Preloader />
+      ) : (
+        <MoviesCardList
+          filteredSavedMovies={props.filteredSavedMovies}
+          savedMovies={props.savedMovies}
+          handleDeleteMovie={props.handleDeleteMovie}
+          isSavedMovieFound={props.isSavedMovieFound}
+          savedMoviesErrorMessage={props.savedMoviesErrorMessage}
+        />
+      )}
+
     </section>
   )
 }

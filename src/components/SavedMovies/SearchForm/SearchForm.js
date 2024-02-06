@@ -9,14 +9,6 @@ function SearchForm(props) {
       isValid: true
     });
 
-  useEffect(() => {
-    setInputValue(localStorage.getItem('inputData'));
-  }, [setInputValue]);
-
-  useEffect(() => {
-    searchError.isValid && setSearchError({errorMessage: '', isValid: true});
-  }, []);
-
   function handleChange(evt) {
     setInputValue(evt.target.value);
 
@@ -43,7 +35,7 @@ function SearchForm(props) {
       });
     }
 
-    props.handleSearchMovie(inputValue);
+    props.handleSearchSavedMovie(inputValue);
   }
 
   return (
@@ -59,7 +51,7 @@ function SearchForm(props) {
           onChange={handleChange}>
         </input>
         {<span className="search-form__input-error">
-          {searchError.errorMessage || props.searchMovieErrorMessage}
+          {searchError.errorMessage || props.searchSavedMovieErrorMessage}
         </span>}
         <button
           className="search-form__button"
@@ -74,7 +66,7 @@ function SearchForm(props) {
           type="checkbox"
           id="checkbox"
           checked={props.isChecked}
-          onChange={props.handleToggleMovieCheckbox}></input>
+          onChange={props.handleToggleSavedMovieCheckbox}></input>
         <label className="search-form__checkbox-button" htmlFor="checkbox"></label>
         <p className="search-form__checkbox-caption">Короткометражки</p>
       </div>
